@@ -1,30 +1,50 @@
-//package main
-//
-//import (
-//	"fmt"
-//)
-//
-//func main() {
-//	var revenue float64
-//	var expenses float64
-//	var taxRate float64
-//
-//	fmt.Print("Revenue Amount: ")
-//	fmt.Scan(&revenue)
-//
-//	fmt.Print("Expenses Amount: ")
-//	fmt.Scan(&expenses)
-//
-//	fmt.Print("Tax Rate: ")
-//	fmt.Scan(&taxRate)
-//
-//	ebt := revenue - expenses
-//	profit := ebt * (1 - taxRate/100)
-//	ratio := ebt / profit
-//
-//	formattedFV := fmt.sprintf("EBT: %.1f\n ", ebt)
-//	formattedRFV := fmt.sprintf("Profit: %.1f\n ", profit)
-//	// outputs information
-//	fmt.Printf(`EBT: %.1f\n
-//		Profit: %.1f\n`)
-//}
+package main
+
+import "fmt"
+
+func main() {
+	revenue := inputRevenue()
+	expanses := inputExpanses()
+	taxRate := inputTaxRate()
+
+	ebt := calculateEBT(revenue, expanses)
+	profit := calculateProfit(wbt, taxRate)
+	ratio := calculateRatio(ebt, profit)
+
+	fmt.Print(ebt)
+	fmt.Print(profit)
+	fmt.Print(ratio)
+}
+
+func inputRevenue() float64 {
+	var revenue float64
+	fmt.Print("Revenue: ")
+	fmt.Scan(&revenue)
+	return revenue
+}
+
+func inputExpanses() float64 {
+	var expanses float64
+	fmt.Print("Expanses: ")
+	fmt.Scan(&expanses)
+	return expanses
+}
+
+func inputTaxRate() float64 {
+	var taxRate float64
+	fmt.Print("Tax Rate: ")
+	fmt.Scan(&taxRate)
+	return taxRate
+}
+
+func calculateEBT(revenue, expanses float64) float64 {
+	return revenue - expanses
+}
+
+func calculateProfit(ebt, taxRate float64) float64 {
+	return ebt * (1 - taxRate/100)
+}
+
+func calculateRatio(ebt, profit float64) float64 {
+	return ebt / profit
+}
